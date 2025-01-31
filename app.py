@@ -3,13 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///checkout.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Checkout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
-    active = db.Column(db.Boolean, default=True)
+    title = db.Column(db.String(100), nullable=False)
+    intro = db.Column(db.Integer, nullable=False)
+    text = db.Column(db.Boolean, default=True)
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -29,6 +30,12 @@ def about():  # put application's code here
 @app.route('/user/<string:name>/<int:id>')
 def user(name, id):  # put application's code here
     return 'Юзер по имени ' + name + ' с id ' + str(id)
+
+@app.route('/create')
+def create():  # put application's code here
+    return render_template('create_article.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
