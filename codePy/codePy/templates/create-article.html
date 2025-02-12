@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+     Форма опросного листа
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <main>
+    <div class="py-5 text-center">
+      <h2>Форма опросного листа</h2>
+      <p class="lead">Заполните поля технических требований на поставляемое оборудование.</p>
+    </div>
+
+<div class="container">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Заполнение заявки</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Укажите действительное имя.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Фамилия</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Укажите действительную фамилию.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Электронная почта</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Пожалуйста, введите действительный адрес электронной почты.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="address" placeholder="Страна, Город, улица, 1234" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите адрес.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="support" class="form-label">Лист заполнил <span class="text-body-secondary">(Поддержка Меридиан)</span></label>
+              <input type="text" class="form-control" id="support" placeholder="" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите адрес.
+              </div>
+            </div>
+
+            <h4 class="mb-3">Сведения о существующей линии (зона еденичной продукции) </h4>
+
+            <div class="col-12">
+              <label for="placement" class="form-label">Помещение для расположения оборудования</label>
+              <input type="text" class="form-control" id="placement" placeholder="" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите название помещения.
+              </div>
+            </div>
+
+          <label for="robot_type" class="form-label">Тип Робота:</label>
+            <select name="robot_type" class="form-select" id="robot_type">
+                {% for type in robot_types %}
+                 <option value="{{ type }}" {% if type == robot_type %}selected{% endif %}>{{ type }}</option>
+                {% endfor %}
+             </select><br><br>
+
+          <label for="axes" class="form-label">Количество Осей:</label>
+             <select name="axes" id="axes"  class="form-select">
+                 {% for axis in axes_options %}
+                 <option value="{{ axis }}" {% if axis == axes %}selected{% endif %}>{{ axis }}</option>
+                {% endfor %}
+            </select><br><br>
+
+          <label for="manufacturer" class="form-label">Производитель:</label>
+            <select name="manufacturer" id="manufacturer"  class="form-select">
+                {% for m in manufacturer_options %}
+                 <option value="{{ m }}" {% if m == manufacturer %}selected{% endif %}>{{ m }}</option>
+                {% endfor %}
+             </select><br><br>
+
+          <label for="model" class="form-label">Модель:</label>
+             <select name="model" id="model"  class="form-select">
+                 {% for mod in model_options %}
+                    <option value="{{ mod }}" {% if mod == model %}selected{% endif %}>{{ mod }}</option>
+                {% endfor %}
+             </select><br><br>
+
+
+          <a href="/about" class="w-100 btn btn-primary btn-lg" type="submit">Записать</a>
+          </div>
+        </form>
+      </div>
+</div>
+    </main>
+    </div>
+{% endblock %}

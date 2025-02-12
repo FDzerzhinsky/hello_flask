@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <LINK rel ="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
+    <LINK rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+          <svg width="158" height="32" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M49.6508 19.2086L44.5794 13.6838V23.5584H41.7871V9.33398H43.9224L49.6918 15.7865L55.3791 9.33398H57.4939V23.5584H54.7016V13.725L49.6508 19.2086Z" fill="#0D1F51"></path>
+<path d="M70.3477 21.1465V23.5584H59.199V9.33398H70.3272V11.746H61.9913V15.2093H70.1835V17.6007H61.9913V21.1465H70.3477Z" fill="#0D1F51"></path>
+<path d="M84.4258 14.5084C84.4258 16.3912 84.0152 17.7862 83.1939 18.6933C82.3863 19.5866 81.1476 20.0333 79.4776 20.0333H74.5911V23.5584H71.7988V9.33398H79.4366C81.2023 9.33398 82.4753 9.73254 83.2555 10.5297C84.0357 11.3268 84.4258 12.653 84.4258 14.5084ZM78.9643 11.746H74.5911V17.6213H79.0054C79.8951 17.6213 80.5453 17.3876 80.9559 16.9204C81.3802 16.4531 81.5924 15.6628 81.5924 14.5496C81.5924 13.4501 81.4076 12.708 81.038 12.3232C80.6685 11.9384 79.9772 11.746 78.9643 11.746Z" fill="#0D1F51"></path>
+<path d="M88.4535 9.33398V19.0231L96.3377 9.33398H98.3498V23.5584H95.5575V13.9518L87.6117 23.5584H85.6818V9.33398H88.4535Z" fill="#0D1F51"></path>
+<path d="M114.994 21.0434V27.063H112.324V23.5584H101.771V27.063H99.0815V21.0434H100.683C101.285 20.0814 101.668 19.0781 101.833 18.0336C101.997 16.9753 102.079 15.1681 102.079 12.6118V9.33398H113.125V21.0434H114.994ZM104.687 13.3333C104.687 17.0303 104.297 19.6003 103.516 21.0434H110.312V11.746H104.687V13.3333Z" fill="#0D1F51"></path>
+<path d="M118.626 9.33398V19.0231L126.51 9.33398H128.522V23.5584H125.73V13.9518L117.784 23.5584H115.854V9.33398H118.626Z" fill="#0D1F51"></path>
+<path d="M129.089 23.5584L135.495 9.33398H137.795L144.139 23.5584H141.018L140.033 21.1465H133.155L132.148 23.5584H129.089ZM136.624 12.8798L134.058 19.0231H139.15L136.624 12.8798Z" fill="#0D1F51"></path>
+<path d="M147.535 9.33398V15.2093H155.07V9.33398H157.862V23.5584H155.07V17.7244H147.535V23.5584H144.743V9.33398H147.535Z" fill="#0D1F51"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V32H2.65315V2.66667L26.5315 2.66667V0H0Z" fill="#0D1F51"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31.8379 32V5.33334H29.1847V29.3333L8.27968e-05 29.3333L0 32L31.8379 32Z" fill="#0D1F51"></path>
+<path d="M29.1836 0H31.8367V2.66667H29.1836V0Z" fill="#0D1F51"></path>
+<path d="M4.64258 8.66699H7.29573V11.3337H4.64258V8.66699Z" fill="#0D1F51"></path>
+<path d="M27.1953 8.66699H24.5422V11.3337H27.1953V8.66699Z" fill="#0D1F51"></path>
+<path d="M4.64258 4.66602H7.29573V7.33268H4.64258V4.66602Z" fill="#0D1F51"></path>
+<path d="M27.1953 4.66602H24.5422V7.33268H27.1953V4.66602Z" fill="#0D1F51"></path>
+<path d="M4.64258 12.667H7.29573V15.3337H4.64258V12.667Z" fill="#0D1F51"></path>
+<path d="M27.1953 12.667H24.5422V15.3337H27.1953V12.667Z" fill="#0D1F51"></path>
+<path d="M4.64258 16.667H7.29573V19.3337H4.64258V16.667Z" fill="#0D1F51"></path>
+<path d="M27.1952 16.6669H24.5421V19.3335H27.1952V16.6669Z" fill="#0D1F51"></path>
+<path d="M4.64258 20.667H7.29573V23.3337H4.64258V20.667Z" fill="#0D1F51"></path>
+<path d="M27.1952 20.667H24.5421V23.3337H27.1952V20.667Z" fill="#0D1F51"></path>
+<path d="M4.64258 24.667H7.29573V27.3337H4.64258V24.667Z" fill="#0D1F51"></path>
+<path d="M27.1952 24.6672H24.5421V27.3338H27.1952V24.6672Z" fill="#0D1F51"></path>
+<path d="M8.625 8.66699H11.2782V11.3337H8.625V8.66699Z" fill="#0D1F51"></path>
+<path d="M12.6035 8.66699H15.2567V11.3337H12.6035V8.66699Z" fill="#0D1F51"></path>
+<path d="M16.582 8.66699H19.2352V11.3337H16.582V8.66699Z" fill="#0D1F51"></path>
+<path d="M23.2168 8.66699H20.5636V11.3337H23.2168V8.66699Z" fill="#0D1F51"></path>
+<path d="M8.625 4.66602H11.2782V7.33268H8.625V4.66602Z" fill="#0D1F51"></path>
+<path d="M23.2168 4.66602H20.5636V7.33268H23.2168V4.66602Z" fill="#0D1F51"></path>
+<path d="M8.625 12.667H11.2782V15.3337H8.625V12.667Z" fill="#0D1F51"></path>
+<path d="M12.6035 12.667H15.2567V15.3337H12.6035V12.667Z" fill="#0D1F51"></path>
+<path d="M16.582 12.667H19.2352V15.3337H16.582V12.667Z" fill="#0D1F51"></path>
+<path d="M14.5916 16.6669H17.2448V19.3335H14.5916V16.6669Z" fill="#0D1F51"></path>
+<path d="M23.2168 12.667H20.5636V15.3337H23.2168V12.667Z" fill="#0D1F51"></path>
+<path d="M8.625 16.667H11.2782V19.3337H8.625V16.667Z" fill="#0D1F51"></path>
+<path d="M23.2168 16.667H20.5636V19.3337H23.2168V16.667Z" fill="#0D1F51"></path>
+<path d="M8.625 20.667H11.2782V23.3337H8.625V20.667Z" fill="#0D1F51"></path>
+<path d="M23.2168 20.667H20.5636V23.3337H23.2168V20.667Z" fill="#0D1F51"></path>
+<path d="M8.625 24.667H11.2782V27.3337H8.625V24.667Z" fill="#0D1F51"></path>
+<path d="M23.2168 24.667H20.5636V27.3337H23.2168V24.667Z" fill="#0D1F51"></path>
+</svg>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/">Главная страница</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/about">Список опросных листов</a>
+      </nav>
+    </div>
+
+
+    {% block body %}{% endblock %}
+
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">Все права защищены. ООО «Меридиан» © 2018-2025</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+
+
+</body>
+</html>
