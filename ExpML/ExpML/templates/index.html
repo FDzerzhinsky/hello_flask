@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>Dependent Dropdown</title>
+</head>
+<body>
+
+    <select id="category" onchange="updateSubcategory1()">
+        <option value="">Выберите тип робота</option>
+        <option value="Промышленный">Промышленный</option>
+        <option value="Коллаборативный">Коллаборативный</option>
+    </select>
+
+    <select id="subcategory1" onchange="updateSubcategory2()">
+        <option value="">Выберите количество осей</option>
+    </select>
+
+    <select id="subcategory2" onchange="updateSubcategory3()">
+        <option value="">Выберите производителя</option>
+    </select>
+
+    <select id="subcategory3" onchange="showSelection()">
+        <option value="">Выберите модель робота</option>
+    </select>
+
+    <div id="output" style="margin-top: 20px;"></div>
+
+    <script>
+        const data = {
+            "Промышленный": {
+                "Количество Осей": ["4", "6"],
+                "Производитель": {
+                    "Estun": ["ER3-450", "ER6-1600"],
+                    "REDS": ["RDS-200", "RDS-300"]
+                }
+            },
+            "Коллаборативный": { //
+                "Количество Осей": ["6", "7"],
+                "Производитель": {
+                    "UR": ["UR3", "UR5"],
+                    "Fanuc": ["CR-7iB", "CR-15iB"]
+                }
+            }
+        };
+
+        function updateSubcategory1() {
+            const category = document.getElementById('category').value;
+            const sub1 = document.getElementById('subcategory1');
+            const sub2 = document.getElementById('subcategory2');
+            const sub3 = document.getElementById('subcategory3');
+
+            // Очистка всех зависимых списков
+            sub1.innerHTML = '<option value="">Выберите количество осей</option>';
+            sub2.innerHTML = '<option value="">Выберите производителя</option>';
+            sub3.innerHTML = '<option value="">Выберите модель</option>';
+
+            if (category && data[category]) {
+                // Заполняем второй список (Количество Осей)
+                data[category]["Количество Осей"].forEach(item => {
+                    const option = new Option(item, item);
+                    sub1.add(option);
+                });
+            }
+        }
+
+        function updateSubcategory2() {
+            const category = document.getElementById('category').value;
+            const sub1Value = document.getElementById('subcategory1').value;
+            const sub2 = document.getElementById('subcategory2');
+
+            sub2.innerHTML = '<option value="">Выберите производителя</option>';
+
+            if (category && sub1Value && data[category]?.["Производитель"]) {
+                Object.keys(data[category]["Производитель"]).forEach(manufacturer => {
+                    const option = new Option(manufacturer, manufacturer);
+                    sub2.add(option);
+                });
+            }
+        }
+
+        function updateSubcategory3() {
+            const category = document.getElementById('category').value;
+            const sub2Value = document.getElementById('subcategory2').value;
+            const sub3 = document.getElementById('subcategory3');
+
+            sub3.innerHTML = '<option value="">Выберите модель</option>';
+
+            if (category && sub2Value && data[category]?.["Производитель"]?.[sub2Value]) {
+                data[category]["Производитель"][sub2Value].forEach(model => {
+                    const option = new Option(model, model);
+                    sub3.add(option);
+                });
+            }
+        }
+
+        function showSelection() {
+            const output = document.getElementById('output');
+            const [
+                category,
+                sub1,
+                sub2,
+                sub3
+            ] = ['category', 'subcategory1', 'subcategory2', 'subcategory3']
+                .map(id => document.getElementById(id).value);
+
+            output.innerHTML = category && sub1 && sub2 && sub3
+                ? `Вы выбрали:<br>
+                    Тип: ${category}<br>
+                    Оси: ${sub1}<br>
+                    Производитель: ${sub2}<br>
+                    Модель: ${sub3}`
+                : '';
+        }
+    </script>
+</body>
+</html>
