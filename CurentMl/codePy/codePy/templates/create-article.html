@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+     Форма опросного листа
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <main>
+    <div class="py-5 text-center">
+      <h2>Форма опросного листа</h2>
+      <p class="lead">Заполните поля технических требований на поставляемое оборудование.</p>
+    </div>
+
+<div class="container">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Заполнение заявки</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Укажите действительное имя.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Фамилия</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Укажите действительную фамилию.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Электронная почта</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Пожалуйста, введите действительный адрес электронной почты.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="address" placeholder="Страна, Город, улица, 1234" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите адрес.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="support" class="form-label">Лист заполнил <span class="text-body-secondary">(Поддержка Меридиан)</span></label>
+              <input type="text" class="form-control" id="support" placeholder="" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите адрес.
+              </div>
+            </div>
+
+            <h4 class="mb-3">Сведения о существующей линии (зона еденичной продукции) </h4>
+
+            <div class="col-12">
+              <label for="placement" class="form-label">Помещение для расположения оборудования</label>
+              <input type="text" class="form-control" id="placement" placeholder="" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, введите название помещения.
+              </div>
+            </div>
+
+              <form method="POST">
+
+        <!-- Выпадающие списки -->
+        <select id="category" name="category" onchange="updateSubcategory1()">
+            <option value="">Выберите тип робота</option>
+            <option value="Промышленный">Промышленный</option>
+            <option value="Коллаборативный">Коллаборативный</option>
+        </select>
+
+        <select id="subcategory1" name="subcategory1" onchange="updateSubcategory2()">
+            <option value="">Выберите количество осей</option>
+        </select>
+
+        <select id="subcategory2" name="subcategory2" onchange="updateSubcategory3()">
+            <option value="">Выберите производителя</option>
+        </select>
+
+        <select id="subcategory3" name="subcategory3" onchange="showSelection()">
+            <option value="">Выберите модель робота</option>
+        </select>
+
+        <div id="output" style="margin-top: 20px;"></div>
+
+    <script>
+        // Данные из Flask
+        const data = {{ data|tojson }};
+
+        function updateSubcategory1() {
+            const category = document.getElementById('category').value;
+            const sub1 = document.getElementById('subcategory1');
+            const sub2 = document.getElementById('subcategory2');
+            const sub3 = document.getElementById('subcategory3');
+
+            sub1.innerHTML = '<option value="">Выберите количество осей</option>';
+            sub2.innerHTML = '<option value="">Выберите производителя</option>';
+            sub3.innerHTML = '<option value="">Выберите модель</option>';
+
+            if (category && data[category]) {
+                data[category]["Количество Осей"].forEach(item => {
+                    const option = new Option(item, item);
+                    sub1.add(option);
+                });
+            }
+        }
+    </script>
+              </form>
+          <a href="/about" class="w-100 btn btn-primary btn-lg" type="submit">Записать</a>
+          </div>
+        </form>
+      </div>
+</div>
+    </main>
+    </div>
+{% endblock %}
