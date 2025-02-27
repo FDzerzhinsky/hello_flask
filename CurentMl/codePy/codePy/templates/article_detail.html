@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Заявка №{{ article.id }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Детали заявки №{{ article.id }}</h1>
+
+    <div class="alert alert-info">
+        <h2>{{ article.title }}</h2>
+        <p><b>Тип робота:</b> {{ article.robot_type }}</p>
+        <p><b>Количество осей:</b> {{ article.axes }}</p>
+        <p><b>Производитель:</b> {{ article.manufacturer }}</p>
+        <p><b>Модель:</b> {{ article.model }}</p>
+        <p><b>Дата создания:</b> {{ article.date.date() }}</p>
+        <p><b>Описание:</b><br>{{ article.text }}</p>
+        <a href="/articles" class="btn btn-warning">Назад к списку</a>
+    </div>
+</div>
+{% endblock %}

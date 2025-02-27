@@ -5,5 +5,20 @@
 {% endblock %}
 
 {% block body %}
-<h1>Список опросных листов</h1>
+<div class="container">
+    <h1>Список опросных листов</h1>
+
+    {% if articles|length > 0 %}
+        {% for article in articles %}
+            <div class="alert alert-info">
+                <a href="/articles/{{ article.id }}">
+                    <h2>Заявка №{{ article.id }}</h2>
+                    <p><b>Дата создания: {{ article.date.date() }}</b></p>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Еще нет ни одной заявки</p>
+    {% endif %}
+</div>
 {% endblock %}
